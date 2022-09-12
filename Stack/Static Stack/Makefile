@@ -2,9 +2,10 @@ CC = gcc
 FLAGS = -g -std=c99 -Wall -Werror
 
 OBJECTS = main.o stack.o
+BIN = client
 
-client: $(OBJECTS)
-	$(CC) -o client $(FLAGS) $(OBJECTS)
+$(BIN): $(OBJECTS)
+	$(CC) -o $(BIN) $(FLAGS) $(OBJECTS)
 
 main.o: main.c stack.h
 	$(CC) -c $(FLAGS) main.c
@@ -12,5 +13,8 @@ main.o: main.c stack.h
 stack.o: stack.c stack.h
 	$(CC) -c $(FLAGS) stack.c
 
+valgrind: 
+	valgrind ./$(BIN)
+
 clean: 
-	rm *.o client
+	rm *.o $(BIN)
