@@ -24,7 +24,6 @@ typedef enum error
     /*  */
     full_stack,
 
-
 } error_t;
 
 typedef struct stack stack_t;
