@@ -16,6 +16,8 @@ bool isEmpty(list_t* list);
 
 void printList(list_t* list);
 
+void printListReverse(list_t* list);
+
 void destroyList(list_t** list);
 
 #endif //LIST_H

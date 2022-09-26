@@ -152,6 +152,20 @@ void printList(list_t* list)
     printf("\n");
 }
 
+void printListReverse(list_t* list)
+{
+    assert(list != NULL);
+
+    node_t* aux = list->end;
+    while(aux != NULL)
+    {
+        printf("%d ", aux->value);
+        
+        aux = aux->previous;
+    }
+    printf("\n");
+}
+
 void destroyList(list_t** list)
 {
     if(list == NULL || *list == NULL) return;
