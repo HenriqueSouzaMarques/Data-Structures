@@ -14,6 +14,8 @@ void removeElement(list_t* list, element x);
 
 bool isEmpty(list_t* list);
 
+bool findElement(list_t* list, element x);
+
 void printList(list_t* list);
 
 void printListReverse(list_t* list);
