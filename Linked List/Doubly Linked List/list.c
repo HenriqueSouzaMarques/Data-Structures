@@ -33,6 +33,9 @@ void insert(list_t* list, element x)
 {
     assert(list != NULL);
 
+    /* Only new elements can be added */
+    if(findElement(list, x)) return;
+
     node_t *newNode = (node_t*)malloc(sizeof(node_t));
     assert(newNode != NULL);
 
@@ -41,45 +44,36 @@ void insert(list_t* list, element x)
     newNode->previous = NULL;
 
     node_t* aux = list->start;
-    node_t* pre = NULL;
 
     while(aux != NULL && x > aux->value)
     {
-        pre = aux;
         aux = aux->next;
     }
 
-    if(aux != NULL && x == aux->value)
+    if(list->start == NULL) // adding the new node in a empty list
     {
-        free(newNode);
-        return;
+        list->start = newNode;
+        list->end = newNode;
     }
-
-    if(pre == NULL)
+    else if(aux == list->start) // adding the new node at the beginning of the list
     {
         newNode->next = list->start;
-        if(list->start != NULL)
-        {
-            list->start->previous = newNode;
-        }
-    
+        list->start->previous = newNode;
         list->start = newNode;
     }
-    else
+    else if(aux == NULL) // adding the new node at the end of the list
     {
+        newNode->previous = list->end;
+        list->end->next = newNode;
+        list->end = newNode;
+    }
+    else // adding the new node between two other nodes
+    {
+        aux->previous->next = newNode;
+        newNode->previous = aux->previous;
+
+        aux->previous = newNode;
         newNode->next = aux;
-        pre->next = newNode;
-
-        if(aux != NULL)
-        {
-            aux->previous = newNode;
-        }
-        else
-        {
-            list->end = newNode;
-        }
-
-        newNode->previous = pre;
     }
 }
 
@@ -88,44 +82,41 @@ void removeElement(list_t* list, element x)
     assert(list != NULL);
 
     node_t* aux = list->start;
-    node_t* pre = NULL;
 
     while(aux != NULL && x > aux->value)
     {
-        pre = aux;
         aux = aux->next;
     }
 
     if(aux == NULL) return;
 
-    if(pre == NULL)
+    if(aux->value == x)
     {
-        list->start = list->start->next;
-
-        if(list->start != NULL )
+        if(aux == list->start) // removing from the beginning of the list
         {
-            list->start->previous = NULL;
+            if(aux == list->end)
+            {
+                list->start = NULL;
+                list->end = NULL;
+            }
+            else
+            {
+                list->start = aux->next;
+                list->start->previous = NULL;
+            }
         }
-        else
+        else if(aux == list->end) // removing from the end at the list
         {
-            list->end = NULL;
+            list->end = aux->previous;
+            list->end->next = NULL;
         }
+        else // removing a node in between two other nodes
+        {
+            aux->previous->next = aux->next;
+            aux->next->previous = aux->previous;
+        }
+        free(aux);
     }
-    else
-    {
-        if(aux->next == NULL)
-        {
-            list->end = pre;
-            pre->next = NULL;
-        }
-        else
-        {
-            pre->next = aux->next;
-            aux->next->previous = pre;
-        }
-    }
-
-    free(aux);
 }
 
 bool isEmpty(list_t* list)

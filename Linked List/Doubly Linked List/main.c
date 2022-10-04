@@ -7,7 +7,7 @@
 int main()
 {
     list_t* list = createList();
-    
+
     destroyList(&list);
 
     return EXIT_SUCCESS;
