@@ -1,6 +1,6 @@
 # Algorithms-and-Data-Structures
 
-This repository provides Data Structures algorithms (C language) using concepts, such as Abstract Type of Data (ATD), acquired from the SCC0202 - Algorithms and Data Structures - ICMC/USP taught by Prof. Marcelo Manzato.
+This repository provides Data Structures algorithms (C language) using concepts, such as Abstract Type of Data (ATD), acquired from the SCC0202 - Algorithms and Data Structures I - ICMC/USP taught by Prof. Marcelo Manzato.
 
 Covered topics:
 #### 1. Stacks
