@@ -7,4 +7,3 @@ Covered topics:
 #### 2. Queues
 #### 3. Lists
 #### 4. Trees
-#### 5. Heap
