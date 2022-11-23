@@ -99,17 +99,17 @@ bool _deleteElement(node_t** root, element deletedElement)
         }
         else if((*root)->leftChild == NULL) /* Removing when node has the left child */
         {
-            node_t* aux = *root;
-            *root = (*root)->rightChild;
+            (*root)->value = (*root)->rightChild->value;
 
-            free(aux);
+            free((*root)->rightChild);
+            (*root)->rightChild = NULL;
         }
         else if((*root)->rightChild == NULL) /* Removing when node has the right child */
         {
-            node_t* aux = *root;
-            *root = (*root)->leftChild;
+            (*root)->value = (*root)->leftChild->value;
 
-            free(aux);
+            free((*root)->leftChild);
+            (*root)->leftChild = NULL;
         }
         else /* Removing when node has both children */
         {
