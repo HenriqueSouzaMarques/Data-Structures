@@ -13,6 +13,9 @@ main.o: main.c list.h
 list.o: list.c list.h
 	$(CC) -c $(FLAGS) list.c
 
+run:
+	./$(BIN)
+
 valgrind: 
 	valgrind ./$(BIN)
 

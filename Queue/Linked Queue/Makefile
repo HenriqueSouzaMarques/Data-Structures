@@ -13,6 +13,9 @@ main.o: main.c queue.h
 queue.o: queue.c queue.h
 	$(CC) -c $(FLAGS) queue.c
 
+run:
+	./$(BIN)
+
 valgrind: 
 	valgrind ./$(BIN)
 

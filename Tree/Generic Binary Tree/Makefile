@@ -13,6 +13,9 @@ main.o: main.c binary_tree.h
 binary_tree.o: binary_tree.c binary_tree.h
 	$(CC) -c $(FLAGS) binary_tree.c
 
+run:
+	./$(BIN)
+
 valgrind: 
 	valgrind ./$(BIN)
 

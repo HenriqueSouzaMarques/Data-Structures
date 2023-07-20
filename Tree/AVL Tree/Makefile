@@ -12,12 +12,12 @@ main.o: main.c avl.h
 
 avl.o: avl.c avl.h
 	$(CC) -c $(FLAGS) avl.c
+
+run:
+	./$(BIN)
  
 valgrind: 
 	valgrind ./$(BIN)
 
 clean: 
 	rm *.o $(BIN)
-
-run:
-	./$(BIN)

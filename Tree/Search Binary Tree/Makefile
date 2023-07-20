@@ -13,6 +13,9 @@ main.o: main.c search_binary_tree.h
 search_binary_tree.o: search_binary_tree.c search_binary_tree.h
 	$(CC) -c $(FLAGS) search_binary_tree.c
 
+run:
+	./$(BIN)
+
 valgrind: 
 	valgrind ./$(BIN)
 
